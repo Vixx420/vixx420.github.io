@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://sodaboop.github.io/links/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>LunaLinks</title>
+        
+        
+        <!-- Import a nice Google Font -->
+        <link href="./sodaboop_files/css" rel="stylesheet"> 
+        
+        <!-- Styles -->
+        <style type="text/css">
+            /* Unifies the browsers (Chrome, Firefox, IE, etc) */
+            * {box-sizing: border-box;}
+            
+            /* Remove Default Page Styles */
+            body,html {
+                position: relative;
+                margin: 0;
+                padding: 0;
+                height: 100%;/* Set the page height to be 100% of the screen */
+                font-family: "Montserrat", Arial, Helvetica, sans-serif;
+                overflow: hidden;
+            }
+            
+            /* Main Page Container (Centers page( */
+            .main-cont {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);/* Move to center */
+                z-index: 10;
+            }
+            
+            .copyright {color: #DDD; text-align: right; font-size: 0.7vw; margin-right: 2.5%;/*margin matches button margin*/}
+            
+            /* Title Styles */
+            .title {
+                font-size: 5vw;
+                font-weight: 400;
+                cursor: default;
+            }
+            
+            .title > .sub {
+                font-weight: 300;
+                font-size: 2.8vw;
+            }
+            
+            /* Button Styles */
+            a {
+                width: 45%;
+                margin: 2.5%;
+                padding: 2% 0;
+                display: inline-block;
+                border-radius: 6px;
+                border: 2px solid black;
+                text-align: center;
+                font-size: 0.9vw;
+                color: #333;
+                text-decoration: none;
+                transition: all 0.2s ease-in-out;
+                float: left;
+                background: white;
+            }
+            a:hover {color: white;}
+            
+            /* Specfic Button Styles */
+            a.discord:hover {background: #7289DA;border-color: #7289DA;}
+            a.steam:hover {background: #1B2838; border-color: #1B2838;}
+            a.twitter:hover {background: #1DA1F3; border-color: #1DA1F3;}
+            a.tumblr:hover {background: #36465D; border-color: #36465D;}
+            a.twitch:hover {background: #6441A4; border-color: #6441A4;}
+            a.youtube:hover {background: #CD201F; border-color: #CD201F;}
+            
+            /* Target Anything Portrait */
+            @media screen and (orientation: portrait) {
+                .title {font-size: 20vw;}
+                .title > .sub {font-size: 15vw;}
+                .copyright {font-size: 4vw;}
+                a {font-size: 6vw;}
+            }
+            
+            /* Explosion */
+            .explosion-canvas {
+                width: 800px;
+                height: 450px;
+                position: relative;
+            }
+            
+            .explosion {
+                position: absolute;
+                transform: translate(-50%,-50%);
+            }
+            .explosion-inner {position: relative;width:100%;height:100%; height: 100%;}
+            
+            .explosion-line {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+            }
+            
+            @keyframes expl-line {
+                0%   {width:  0%;left: 0%;opacity:100;}
+                45%  {width: 25%;opacity:100;}
+                90% {width:   0%;left:50%;opacity:0;}
+                95% {opacity:0;}
+                100% {opacity:0;}
+            }
+            .explosion-line > .explosion-inner > .explosion-line-inner {
+                position: absolute;
+                border: 1px solid black;
+                animation-name: expl-line;
+                animation-duration: 0.75s;
+                transform: translate(-50%, -50%);
+                border-radius: 8px;
+                opacity:1;
+                animation-fill-mode: forwards;
+            }
+            
+            .explosion-line.left{transform: rotate(180deg) translate(100%, 100%);}
+            .explosion-line.up{transform: rotate(-90deg) translate(100%, 0%);}
+            .explosion-line.down{transform: rotate(90deg) translate(0, 100%);}
+            .explosion-line.tr{transform: translate(20%, -50%) rotate(-45deg) ;}
+            .explosion-line.dr{transform: translate(-50%, 20%) rotate(45deg) ;}
+            .explosion-line.dl{transform: translate(-120%, -50%) rotate(135deg) ;}
+            .explosion-line.ul{transform: translate(-50%,-120%) rotate(225deg) ;}
+        </style>
+    </head>
+    
+    <body>
+        <div class="main-cont">
+            <div class="title">/Luna<span class="sub">Nya</span></div>
+            <div class="button-group">
+                <a href="https://discord.gg/0wYzErGikYwMscko" class="discord">discord</a>
+                <a href="http://steamcommunity.com/id/FoxyL4dy/" class="steam">steam</a>
+                <a href="https://twitter.com/Vkhani12345" class="twitter">twitter</a>
+                <a href="https://curiouscat.me/LunaKittyNya" class="tumblr">CuriousCat</a>
+                <a href="https://www.twitch.tv/vixxhs" class="twitch">twitch</a>
+                <a href="https://www.youtube.com/channel/UCyIH8FMWpMJ0AtHpI7EF-AA" class="youtube">youtube</a>
+            </div>
+            <div class="copyright">2017 sodaboop</div>
+            <script type="text/javascript">
+                function explode(target, size, xpos, ypos) {
+                    if(!size) size = 64;
+                    if(!xpos) xpos = 0;
+                    if(!ypos) ypos = 0;
+                    
+                    var explosion = document.createElement("div");
+                    explosion.className = "explosion";
+                    explosion.style.width = size + "px";
+                    explosion.style.height = size + "px";
+                    
+                    var h = '<div class="explosion-inner"><div class="explosion-line-inner"></div></div>';
+                    
+                    var x = '';
+                    x += '<div class="explosion-inner">';
+                    
+                    x += '<div class="explosion-line left" style="width:'+size+'px;height:'+size+'px">'+h+'</div>';
+                    x += '<div class="explosion-line right" style="width:'+size+'px;height:'+size+'px">'+h+'</div>';
+                    x += '<div class="explosion-line up" style="width:'+size+'px;height:'+size+'px">'+h+'</div>';
+                    x += '<div class="explosion-line down" style="width:'+size+'px;height:'+size+'px">'+h+'</div>';
+                    x += '<div class="explosion-line tr" style="width:'+size+'px;height:'+size+'px">'+h+'</div>';
+                    x += '<div class="explosion-line dr" style="width:'+size+'px;height:'+size+'px">'+h+'</div>';
+                    x += '<div class="explosion-line dl" style="width:'+size+'px;height:'+size+'px">'+h+'</div>';
+                    x += '<div class="explosion-line ul" style="width:'+size+'px;height:'+size+'px">'+h+'</div>';
+                    
+                    x += '</div>';
+                    explosion.innerHTML = x;
+                    
+                    target.appendChild(explosion);
+                    
+                    setTimeout(function() {
+                        if(!explosion) return;
+                        explosion.parentNode.removeChild(explosion);
+                    }, 750);
+                    
+                    explosion.style.left = xpos + "px";
+                    explosion.style.top = ypos + "px";
+                    
+                    return explosion;
+                }
+                
+                setInterval(function() {
+                    var e = explode(document.body, 32, Math.random()*document.body.clientWidth, Math.random()*document.body.clientHeight);
+                    e.style.zIndex = 0;
+                }, 300);
+                
+                document.body.addEventListener('click', function(e) {
+                    var blast = explode(document.body, 128, e.clientX, e.clientY);
+                    blast.style.zIndex = 200;
+                }, true);
+            </script>
+        </div>
+    
+
+<div class="explosion" style="width: 32px; height: 32px; left: 1830.06px; top: 683.658px; z-index: 0;"><div class="explosion-inner"><div class="explosion-line left" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line right" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line up" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line down" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line tr" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line dr" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line dl" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line ul" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div></div></div><div class="explosion" style="width: 32px; height: 32px; left: 866.726px; top: 309.582px; z-index: 0;"><div class="explosion-inner"><div class="explosion-line left" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line right" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line up" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line down" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line tr" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line dr" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line dl" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div><div class="explosion-line ul" style="width:32px;height:32px"><div class="explosion-inner"><div class="explosion-line-inner"></div></div></div></div></div></body></html>
